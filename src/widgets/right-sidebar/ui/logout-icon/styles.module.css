@@ -1,0 +1,7 @@
+.sidebar__icon {
+    width: 40px;
+    height: 40px;
+    background-color: #313131;
+    border-radius: 50%;
+    cursor: pointer;
+}
