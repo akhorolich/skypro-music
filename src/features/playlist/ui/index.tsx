@@ -19,6 +19,7 @@ export default function Playlist() {
           </svg>
         </div>
       </div>
+
       <div className={styles.content__playlist}>
         {Array(5)
           .fill(null)
