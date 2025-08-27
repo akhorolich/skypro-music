@@ -67,3 +67,8 @@
     line-height: 24px;
     color: #ffffff;
 }
+
+.trackPlay__authorLink,
+.trackPlay__albumLink {
+    text-decoration: none;
+}

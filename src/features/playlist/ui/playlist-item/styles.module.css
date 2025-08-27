@@ -90,6 +90,12 @@
     color: #696969;
 }
 
+.track__titleLink,
+.track__authorLink,
+.track__albumLink {
+    text-decoration: none;
+}
+
 .track__timeSvg {
     width: 14px;
     height: 12px;
