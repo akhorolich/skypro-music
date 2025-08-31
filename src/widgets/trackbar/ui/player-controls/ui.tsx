@@ -1,5 +1,5 @@
 import styles from './styles.module.css';
-import cn from '@/shared/lib/classnames';
+import { cn } from '@/shared/lib';
 
 export default function PlayerControls() {
   return (

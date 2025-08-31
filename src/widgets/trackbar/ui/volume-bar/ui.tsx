@@ -1,4 +1,4 @@
-import cn from '@/shared/lib/classnames';
+import { cn } from '@/shared/lib';
 import styles from './styles.module.css';
 
 export default function VolumeBar() {
