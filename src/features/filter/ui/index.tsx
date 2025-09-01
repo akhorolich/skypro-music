@@ -21,18 +21,6 @@ export default function Filter({ filteringTracks }: filterProps) {
           />
         </FilterBtn>
       ))}
-      {/* {filters.map((filterQuery) => (
-        <div key={filterQuery.label} className={styles.filter__button}>
-          {filterQuery.label}
-          <FilterList
-            key={filterQuery.queryName}
-            options={selectUniqueItemsFilter(
-              filteringTracks,
-              filterQuery.queryName,
-            )}
-          />
-        </div>
-      ))} */}
     </div>
   );
 }

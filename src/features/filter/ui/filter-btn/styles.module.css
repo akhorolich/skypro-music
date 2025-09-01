@@ -7,6 +7,7 @@
   border: 1px solid #ffffff;
   border-radius: 60px;
   padding: 6px 20px;
+  cursor: pointer;
 }
 
 .filter__button:not(:last-child) {

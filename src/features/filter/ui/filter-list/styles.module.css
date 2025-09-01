@@ -1,4 +1,5 @@
 .filter__block {
+    /* display: none; */
     position: absolute;
     left: 0;
     padding-top: 10px;
@@ -34,5 +35,5 @@
 }
 
 .open {
-    display: none;
+    display: block;
 }
