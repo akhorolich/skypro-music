@@ -6,18 +6,26 @@ import { filters } from '../config';
 import { selectUniqueItemsFilter } from '../model';
 
 import styles from './styles.module.css';
+import useQueryParams from '../model/use-search-params';
 
 type filterProps = { filteringTracks: MockData[] };
 
 export default function Filter({ filteringTracks }: filterProps) {
+  const { push } = useQueryParams();
   return (
     <div className={styles.centerblock__filter}>
       <div className={styles.filter__title}>Искать по:</div>
       {filters.map((filter) => (
-        <FilterBtn key={filter.label} label={filter.label}>
+        <FilterBtn
+          key={filter.label}
+          label={filter.label}
+          pushSearchParams={push}
+          searchParam={filter.queryName}
+        >
           <FilterList
             key={filter.queryName}
             options={selectUniqueItemsFilter(filteringTracks, filter.queryName)}
+            pushSearchParams={push}
           />
         </FilterBtn>
       ))}

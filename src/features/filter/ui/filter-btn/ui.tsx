@@ -1,34 +1,41 @@
-import { ReactElement, useEffect, useRef, useState } from 'react';
+import { ReactElement, useRef, useState } from 'react';
+
+import { cn } from '@/shared/lib';
+import useClickOutside from '../../model/use-click-outside';
+
 import styles from './styles.module.css';
 
 type btnProps = {
   label: string;
+  pushSearchParams: (
+    name: string,
+    value: string | string[],
+  ) => Promise<boolean>;
+  searchParam: string;
   children: ReactElement;
 };
 
-export default function FilterBtn({ label, children }: btnProps) {
+export default function FilterBtn({
+  label,
+  pushSearchParams,
+  searchParam,
+  children,
+}: btnProps) {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as Node;
-      if (!selectRef.current?.contains(target)) {
-        setIsOpen(false);
-      }
-    };
+  useClickOutside(selectRef, setIsOpen);
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  const handleClick = () => {
+    pushSearchParams('sort', searchParam);
+    setIsOpen((prev) => !prev);
+  };
 
   return (
     <div
       ref={selectRef}
-      className={styles.filter__button}
-      onClick={() => setIsOpen((prev) => !prev)}
+      className={cn(styles.filter__button, { [styles.open]: isOpen })}
+      onClick={handleClick}
     >
       {label}
       {isOpen && children}

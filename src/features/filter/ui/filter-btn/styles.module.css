@@ -13,3 +13,8 @@
 .filter__button:not(:last-child) {
   margin-right: 10px;
 }
+
+.open {
+  color: #b672ff;
+  border-color: #b672ff;
+}
