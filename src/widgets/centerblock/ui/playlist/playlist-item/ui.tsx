@@ -4,7 +4,7 @@ import { convertToMin } from '../../../lib/index';
 
 import styles from './styles.module.css';
 
-export default function PlaylistItem(track: MockData) {
+export function PlaylistItem(track: MockData) {
   return (
     <div className={styles.playlist__item}>
       <div className={styles.playlist__track}>

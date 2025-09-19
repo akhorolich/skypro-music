@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export default function useClickOutside(
+export function useClickOutside(
   selectRef: React.RefObject<HTMLDivElement | null>,
   setter: (next: boolean) => void,
 ) {

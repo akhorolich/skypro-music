@@ -1,4 +1,4 @@
-import FilterSelection from '../model/types';
+import { type FilterSelection } from '../model/types';
 
 export const filters: FilterSelection[] = [
   { label: 'иполнителю', queryName: 'author', options: [] },

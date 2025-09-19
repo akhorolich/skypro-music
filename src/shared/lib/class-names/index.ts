@@ -1,6 +1,6 @@
 type cn = (string | Record<string, boolean>)[];
 
-export default function cn(...args: cn) {
+export function cn(...args: cn) {
   if (args.every((el) => typeof el === 'string')) return args.join(' ');
   const result: string[] = [];
 

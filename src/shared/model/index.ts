@@ -1,3 +1,1 @@
-import { MockData } from './types';
-
-export type { MockData };
+export type { MockData } from './types';

@@ -1,7 +1,6 @@
 import { ReactElement, useRef, useState } from 'react';
 
-import { cn } from '@/shared/lib';
-import useClickOutside from '../../model/use-click-outside';
+import { cn, useClickOutside } from '@/shared/lib';
 
 import styles from './styles.module.css';
 

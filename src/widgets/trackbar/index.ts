@@ -1,3 +1,1 @@
-import TrackBar from './ui';
-
-export default TrackBar;
+export { TrackBar } from './ui';

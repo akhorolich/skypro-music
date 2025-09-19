@@ -1,17 +1,18 @@
 import FilterList from './filter-list/ui';
 import FilterBtn from './filter-btn/ui';
 
-import { MockData } from '@/shared/model';
+import { type MockData } from '@/shared/model';
 import { filters } from '../config';
 import { selectUniqueItemsFilter } from '../model';
+import { useQueryParams } from '@/shared/lib';
 
 import styles from './styles.module.css';
-import useQueryParams from '../model/use-search-params';
 
 type filterProps = { filteringTracks: MockData[] };
 
-export default function Filter({ filteringTracks }: filterProps) {
+export function Filter({ filteringTracks }: filterProps) {
   const { push } = useQueryParams();
+
   return (
     <div className={styles.centerblock__filter}>
       <div className={styles.filter__title}>Искать по:</div>

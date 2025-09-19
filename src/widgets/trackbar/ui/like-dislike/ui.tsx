@@ -1,7 +1,7 @@
 import { cn } from '@/shared/lib';
 import styles from './styles.module.css';
 
-export default function LikeOrDislike() {
+export function LikeOrDislike() {
   return (
     <>
       <div className={styles.trackPlay__likeDis}>

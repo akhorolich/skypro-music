@@ -2,7 +2,7 @@ import styles from './styles.module.css';
 
 type BurgerProps = { children: React.ReactNode };
 
-export default function Burger({ children }: BurgerProps) {
+export function Burger({ children }: BurgerProps) {
   return (
     <details className={styles.burger__details}>
       <summary className={styles.nav__burger}>

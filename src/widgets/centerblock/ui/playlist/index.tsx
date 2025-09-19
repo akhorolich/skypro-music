@@ -1,11 +1,11 @@
 import { cn } from '@/shared/lib';
 import { data } from '../../api/mock';
 
-import PlaylistItem from './playlist-item/ui';
+import { PlaylistItem } from './playlist-item/ui';
 
 import styles from './styles.module.css';
 
-export default function Playlist() {
+export function Playlist() {
   return (
     <>
       <div className={styles.content__title}>

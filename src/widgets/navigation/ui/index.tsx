@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
-import Burger from './burger/ui';
-import Logo from './logo/ui';
+import { Burger } from './burger/ui';
+import { Logo } from './logo/ui';
 
 import styles from './styles.module.css';
 
-export default function Navigation() {
+export function Navigation() {
   return (
     <nav className={styles.main__nav}>
       <Logo />

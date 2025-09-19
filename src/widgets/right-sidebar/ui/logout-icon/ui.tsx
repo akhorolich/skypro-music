@@ -1,6 +1,6 @@
 import styles from './styles.module.css';
 
-export default function LogoutIcon() {
+export function LogoutIcon() {
   return (
     <>
       <div className={styles.sidebar__icon}>

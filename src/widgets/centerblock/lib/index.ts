@@ -1,3 +1,1 @@
-import { convertToMin } from './convert-sec-to-min/convertSecToMin';
-
-export { convertToMin };
+export { convertToMin } from './convert-sec-to-min/convertSecToMin';

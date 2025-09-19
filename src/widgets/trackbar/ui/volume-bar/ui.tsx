@@ -1,7 +1,7 @@
 import { cn } from '@/shared/lib';
 import styles from './styles.module.css';
 
-export default function VolumeBar() {
+export function VolumeBar() {
   return (
     <>
       <div className={styles.bar__volumeBlock}>
