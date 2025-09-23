@@ -1,0 +1,12 @@
+.trackPlay__likeSvg {
+    width: 14px;
+    height: 12px;
+    fill: transparent;
+    stroke: #696969;
+}
+
+.trackPlay__likeSvg:hover {
+    fill: #696969;
+    stroke: #ffffff;
+    cursor: pointer;
+}

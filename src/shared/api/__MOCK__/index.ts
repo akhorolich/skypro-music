@@ -17,7 +17,7 @@ export const data: MockData[] = [
   {
     _id: 9,
     name: 'Open Sea epic',
-    author: 'Frank Schroter',
+    author: 'Frank Schrotersadfasdf',
     release_date: '2019-06-12',
     genre: ['Классическая музыка', 'Техно'],
     duration_in_seconds: 165,

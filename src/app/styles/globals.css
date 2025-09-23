@@ -52,13 +52,6 @@ body {
     cursor: pointer;
 }
 
-.btnIcon:active .trackPlay__likeSvg,
-.btnIcon:active .trackPlay__dislikeSvg {
-    fill: #696969;
-    stroke: #ffffff;
-    cursor: pointer;
-}
-
 .btn-text {
     &:hover {
         border-color: #d9b6ff;

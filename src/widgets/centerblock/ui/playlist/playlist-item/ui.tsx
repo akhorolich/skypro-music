@@ -1,18 +1,37 @@
 import Link from 'next/link';
+
 import { MockData } from '@/shared/model';
+import { useAppSelector } from '@/shared/lib/redux-select-dispatch';
 import { convertToMin } from '../../../lib/index';
+import { cn } from '@/shared/lib';
+
+import { Like } from '@/shared/ui';
 
 import styles from './styles.module.css';
+import { getCurrentTrack } from '@/entities/tracks';
 
-export function PlaylistItem(track: MockData) {
+type playlistProps = {
+  track: MockData;
+  setCurrent: (track: MockData) => void;
+};
+
+export function PlaylistItem({ track, setCurrent }: playlistProps) {
+  const { isPlaying, value } = useAppSelector(getCurrentTrack);
+  const listeningNow = isPlaying && track === value;
   return (
-    <div className={styles.playlist__item}>
+    <div className={styles.playlist__item} onClick={() => setCurrent(track)}>
       <div className={styles.playlist__track}>
         <div className={styles.track__title}>
-          <div className={styles.track__titleImage}>
-            <svg className={styles.track__titleSvg}>
-              <use xlinkHref="/icon/sprite.svg#icon-note"></use>
-            </svg>
+          <div
+            className={cn(styles.track__titleImage, {
+              [styles.playing]: listeningNow,
+            })}
+          >
+            {listeningNow ? null : (
+              <svg className={styles.track__titleSvg}>
+                <use xlinkHref="/icon/sprite.svg#icon-note"></use>
+              </svg>
+            )}
           </div>
           <div>
             <Link className={styles.track__titleLink} href="">
@@ -31,9 +50,7 @@ export function PlaylistItem(track: MockData) {
           </Link>
         </div>
         <div>
-          <svg className={styles.track__timeSvg}>
-            <use xlinkHref="/icon/sprite.svg#icon-like"></use>
-          </svg>
+          <Like className={styles.track__timeSvg} />
           <span className={styles.track__timeText}>
             {convertToMin(track.duration_in_seconds)}
           </span>

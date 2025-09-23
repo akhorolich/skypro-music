@@ -22,6 +22,7 @@ export default [
       '@next/next/no-html-link-for-pages': 'error',
       'prettier/prettier': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
+      'no-restricted-imports': 'error',
     },
   },
 ];

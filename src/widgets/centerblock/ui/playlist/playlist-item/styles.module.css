@@ -1,3 +1,15 @@
+@keyframes playing-audio {
+    from{
+        width: 20%;
+        height: 20%;
+        background: #D9B6FF;
+    }to{
+        width: 40%;
+        height: 40%;
+        background: #AD61FF;
+    }
+}
+
 .playlist__item {
     width: 100%;
     display: block;
@@ -25,6 +37,7 @@
 }
 
 .track__titleImage {
+    position: relative;
     padding: 16px;
     background: #313131;
     display: -webkit-box;
@@ -37,6 +50,26 @@
     -ms-flex-pack: center;
     justify-content: center;
     margin-right: 17px;
+}
+
+div.track__titleImage.playing {
+    width: 18px;
+    height: 17px;
+}
+
+.playing::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    background: #AD61FF;
+    animation: playing-audio 0.6s infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
 }
 
 .track__titleSvg {
@@ -95,11 +128,7 @@
 }
 
 .track__timeSvg {
-    width: 14px;
-    height: 12px;
     margin-right: 10px;
-    fill: transparent;
-    stroke: #696969;
 }
 
 .track__timeText {
