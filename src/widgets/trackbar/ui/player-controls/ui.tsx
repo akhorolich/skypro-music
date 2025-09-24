@@ -17,7 +17,10 @@ export function PlayerControls({
   return (
     <>
       <div className={styles.player__controls}>
-        <div className={styles.player__btnPrev}>
+        <div
+          className={styles.player__btnPrev}
+          onClick={() => alert('Не реализованно')}
+        >
           <svg className={styles.player__btnPrevSvg}>
             <use xlinkHref="/icon/sprite.svg#icon-prev"></use>
           </svg>
@@ -33,17 +36,26 @@ export function PlayerControls({
             </svg>
           )}
         </div>
-        <div className={styles.player__btnNext}>
+        <div
+          className={styles.player__btnNext}
+          onClick={() => alert('Не реализованно')}
+        >
           <svg className={styles.player__btnNextSvg}>
             <use xlinkHref="/icon/sprite.svg#icon-next"></use>
           </svg>
         </div>
-        <div className={cn(styles.player__btnRepeat, 'btnIcon')}>
+        <div
+          className={cn(styles.player__btnRepeat, 'btnIcon')}
+          onClick={() => alert('Не реализованно')}
+        >
           <svg className={styles.player__btnRepeatSvg}>
             <use xlinkHref="/icon/sprite.svg#icon-repeat"></use>
           </svg>
         </div>
-        <div className={cn(styles.player__btnShuffle, 'btnIcon')}>
+        <div
+          className={cn(styles.player__btnShuffle, 'btnIcon')}
+          onClick={() => alert('Не реализованно')}
+        >
           <svg className={styles.player__btnShuffleSvg}>
             <use xlinkHref="/icon/sprite.svg#icon-shuffle"></use>
           </svg>

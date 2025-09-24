@@ -23,6 +23,11 @@
     align-items: center;
 }
 
+.player__btnPrev,
+.player__btnNext {
+    cursor: pointer;
+}
+
 .player__btnPrev {
     margin-right: 23px;
 }

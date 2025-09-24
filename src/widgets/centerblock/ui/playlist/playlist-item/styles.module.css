@@ -1,9 +1,11 @@
 @keyframes playing-audio {
-    from{
+    from {
         width: 20%;
         height: 20%;
         background: #D9B6FF;
-    }to{
+    }
+
+    to {
         width: 40%;
         height: 40%;
         background: #AD61FF;
@@ -52,11 +54,6 @@
     margin-right: 17px;
 }
 
-div.track__titleImage.playing {
-    width: 18px;
-    height: 17px;
-}
-
 .playing::before {
     content: "";
     position: absolute;
@@ -70,6 +67,24 @@ div.track__titleImage.playing {
     animation: playing-audio 0.6s infinite;
     animation-direction: alternate;
     animation-timing-function: linear;
+}
+
+.pause::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    background: #AD61FF;
+}
+
+div.track__titleImage.playing,
+div.track__titleImage.pause {
+    width: 18px;
+    height: 17px;
 }
 
 .track__titleSvg {

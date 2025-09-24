@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { MockData } from '@/shared/model';
+import { getCurrentTrack } from '@/entities/tracks';
 import { useAppSelector } from '@/shared/lib/redux-select-dispatch';
 import { convertToMin } from '../../../lib/index';
 import { cn } from '@/shared/lib';
@@ -8,7 +9,6 @@ import { cn } from '@/shared/lib';
 import { Like } from '@/shared/ui';
 
 import styles from './styles.module.css';
-import { getCurrentTrack } from '@/entities/tracks';
 
 type playlistProps = {
   track: MockData;
@@ -17,7 +17,9 @@ type playlistProps = {
 
 export function PlaylistItem({ track, setCurrent }: playlistProps) {
   const { isPlaying, value } = useAppSelector(getCurrentTrack);
+  const onpause = !isPlaying && track === value;
   const listeningNow = isPlaying && track === value;
+
   return (
     <div className={styles.playlist__item} onClick={() => setCurrent(track)}>
       <div className={styles.playlist__track}>
@@ -25,9 +27,10 @@ export function PlaylistItem({ track, setCurrent }: playlistProps) {
           <div
             className={cn(styles.track__titleImage, {
               [styles.playing]: listeningNow,
+              [styles.pause]: onpause,
             })}
           >
-            {listeningNow ? null : (
+            {listeningNow || onpause ? null : (
               <svg className={styles.track__titleSvg}>
                 <use xlinkHref="/icon/sprite.svg#icon-note"></use>
               </svg>

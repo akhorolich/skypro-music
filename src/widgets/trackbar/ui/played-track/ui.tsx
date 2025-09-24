@@ -16,12 +16,12 @@ export function PlayedTrack() {
       <div className={styles.trackPlay__contain}>
         <div className={styles.trackPlay__author}>
           <Link className={styles.trackPlay__authorLink} href="">
-            {track.value?.name}
+            {track.value?.name || 'тут должно быть название'}
           </Link>
         </div>
         <div className={styles.trackPlay__album}>
           <Link className={styles.trackPlay__albumLink} href="">
-            {track.value?.author}
+            {track.value?.author || 'а тут имя автора'}
           </Link>
         </div>
       </div>

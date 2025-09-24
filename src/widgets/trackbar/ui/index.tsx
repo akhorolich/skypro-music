@@ -23,7 +23,7 @@ export function TrackBar() {
         ref={audioRef}
         controls={true}
         src={current.value?.track_file}
-        autoPlay={current.isPlaying}
+        autoPlay
       />
       <div className={styles.bar__content}>
         <div className={styles.bar__playerProgress}></div>

@@ -34,8 +34,10 @@ export function usePlayerControls(
     const el = audioRef.current;
     if (!el) return;
 
+    el.addEventListener('playing', onPlay);
     el.addEventListener('ended', onEnded);
     return () => {
+      el.removeEventListener('playing', onPlay);
       el.removeEventListener('ended', onEnded);
     };
   }, [onEnded]);
