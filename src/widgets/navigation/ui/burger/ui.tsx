@@ -1,11 +1,16 @@
 import styles from './styles.module.css';
 
-export default function Burger() {
+type BurgerProps = { children: React.ReactNode };
+
+export function Burger({ children }: BurgerProps) {
   return (
-    <div className={styles.nav__burger}>
-      <span className={styles.burger__line}></span>
-      <span className={styles.burger__line}></span>
-      <span className={styles.burger__line}></span>
-    </div>
+    <details className={styles.burger__details}>
+      <summary className={styles.nav__burger}>
+        <span className={styles.burger__line}></span>
+        <span className={styles.burger__line}></span>
+        <span className={styles.burger__line}></span>
+      </summary>
+      {children}
+    </details>
   );
 }

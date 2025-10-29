@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
-import cn from '@/shared/lib/classnames';
+import { cn } from '@/shared/lib';
 
-export default function PlayerControls() {
+export function PlayerControls() {
   return (
     <>
       <div className={styles.player__controls}>

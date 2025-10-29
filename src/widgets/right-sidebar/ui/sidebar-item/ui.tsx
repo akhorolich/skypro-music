@@ -8,7 +8,7 @@ interface SidebarProps {
   alt: string;
 }
 
-export default function SidebarItem({ hrefPath, imgPath, alt }: SidebarProps) {
+export function SidebarItem({ hrefPath, imgPath, alt }: SidebarProps) {
   return (
     <div className={styles.sidebar__item}>
       <Link className={styles.sidebar__link} href={hrefPath}>

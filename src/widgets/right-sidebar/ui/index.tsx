@@ -1,9 +1,9 @@
-import SidebarItem from './sidebar-item/ui';
-import LogoutIcon from './logout-icon/ui';
+import { SidebarItem } from './sidebar-item/ui';
+import { LogoutIcon } from './logout-icon/ui';
 
 import styles from './styles.module.css';
 
-export default function Sidebar() {
+export function Sidebar() {
   return (
     <div className={styles.main__sidebar}>
       <div className={styles.sidebar__personal}>

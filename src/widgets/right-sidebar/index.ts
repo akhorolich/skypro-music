@@ -1,3 +1,1 @@
-import Sidebar from './ui';
-
-export default Sidebar;
+export { Sidebar } from './ui';

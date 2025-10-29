@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from './styles.module.css';
 
-export default function PlayedTrack() {
+export function PlayedTrack() {
   return (
     <>
       <div className={styles.trackPlay__contain}>

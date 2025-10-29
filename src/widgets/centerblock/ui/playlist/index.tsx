@@ -1,8 +1,11 @@
-import cn from '@/shared/lib/classnames';
-import PlaylistItem from './playlist-item';
+import { cn } from '@/shared/lib';
+import { data } from '../../api/mock';
+
+import { PlaylistItem } from './playlist-item/ui';
+
 import styles from './styles.module.css';
 
-export default function Playlist() {
+export function Playlist() {
   return (
     <>
       <div className={styles.content__title}>
@@ -21,11 +24,9 @@ export default function Playlist() {
       </div>
 
       <div className={styles.content__playlist}>
-        {Array(5)
-          .fill(null)
-          .map((_, index) => (
-            <PlaylistItem key={index} />
-          ))}
+        {data.map((track) => (
+          <PlaylistItem key={track._id} {...track} />
+        ))}
       </div>
     </>
   );

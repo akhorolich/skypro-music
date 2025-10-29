@@ -1,3 +1,1 @@
-import Centerblock from './ui';
-
-export default Centerblock;
+export { Centerblock } from './ui';

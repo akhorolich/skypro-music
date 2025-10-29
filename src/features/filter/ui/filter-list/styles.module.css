@@ -1,0 +1,44 @@
+.filter__block {
+    position: absolute;
+    left: 0;
+    padding-top: 10px;
+    z-index: 10000;
+}
+
+.filter__list {
+    max-height: 237px;
+    max-width: 248px;
+    height: max-content;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    overflow-y: auto;
+    border-radius: 12px;
+    list-style: none;
+    color: white;
+    background-color: #313131;
+    padding: 34px;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgba(75, 73, 73, 1);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: white;
+    }
+}
+
+/* .filter__list a {
+    color: #fff;
+} */
+
+.filter__list li:hover {
+    color: #b672ff;
+    border-color: #b672ff;
+    text-decoration: underline;
+}
