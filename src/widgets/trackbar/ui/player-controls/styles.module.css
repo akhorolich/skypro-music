@@ -85,3 +85,8 @@
     fill: transparent;
     stroke: #696969;
 }
+
+.active {
+    fill: #ffffff;
+    stroke: #ffffff
+}

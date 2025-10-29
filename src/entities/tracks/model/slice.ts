@@ -1,49 +1,52 @@
-import { createSlice, PayloadAction, WithSlice } from '@reduxjs/toolkit';
+import { createSlice, WithSlice } from '@reduxjs/toolkit';
 import { rootReducer } from '@/shared/redux';
 
-import { MockData } from '@/shared/model';
-import { data } from '@/shared/api';
-
-import { currentTrack } from './types';
-
-interface trackSlice {
-  tracks: Array<MockData>;
-  currentTrack: currentTrack;
-  nextTrack: MockData | null;
-  lastListenedTrack: MockData | null;
-}
+import { trackSlice } from './types';
+import { getControls, getPlayback, getTracks } from './selectors';
+import {
+  shuffleOn,
+  repeatOn,
+  changeVolume,
+  mutedOn,
+} from './actions/controls-actions';
+import {
+  setTracks,
+  setCurrentTrack,
+  setIsPlaying,
+} from './actions/playback-actions';
 
 const initialState: trackSlice = {
   tracks: [],
-  currentTrack: {
-    value: null,
+  playback: {
     isPlaying: false,
+    currentPlaylist: [],
+    currentTrack: null,
+    duration: 0,
   },
-  nextTrack: null,
-  lastListenedTrack: null,
+  controls: {
+    volume: 0.5,
+    shuffleOn: false,
+    repeatOn: false,
+    muted: false,
+  },
 };
 
 const slice = createSlice({
   name: 'tracks',
   initialState,
   selectors: {
-    getTracks(state) {
-      return state.tracks;
-    },
-    getCurrentTrack(state) {
-      return state.currentTrack;
-    },
+    getControls,
+    getPlayback,
+    getTracks,
   },
   reducers: {
-    setTracks(state) {
-      state.tracks = data;
-    },
-    setCurrentTrack(state, action: PayloadAction<MockData>) {
-      state.currentTrack.value = action.payload;
-    },
-    setIsPlaying(state, action: PayloadAction<boolean>) {
-      state.currentTrack.isPlaying = action.payload;
-    },
+    setTracks,
+    setCurrentTrack,
+    setIsPlaying,
+    shuffleOn,
+    repeatOn,
+    changeVolume,
+    mutedOn,
   },
 });
 

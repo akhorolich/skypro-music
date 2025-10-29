@@ -1,27 +1,32 @@
 import { useEffect } from 'react';
 
-import { PlaylistItem } from './playlist-item/ui';
-
 import {
-  useAppDispatch,
-  useAppSelector,
-} from '@/shared/lib/redux-select-dispatch';
-import { getTracks, setCurrentTrack, setTracks } from '@/entities/tracks';
+  initQueue,
+  queueList,
+  trackSelectors,
+  trackActions,
+} from '@/entities/tracks';
 import { MockData } from '@/shared/model';
+import { useAppDispatch, useAppSelector } from '@/shared/lib';
+import { data } from '@/shared/api';
 import { cn } from '@/shared/lib';
+
+import { PlaylistItem } from './playlist-item/ui';
 
 import styles from './styles.module.css';
 
 export function Playlist() {
   const dispatch = useAppDispatch();
-  const tracks = useAppSelector(getTracks);
+  const tracks = useAppSelector(trackSelectors.getTracks);
+  initQueue(queueList, tracks);
 
-  const setCurrent = (track: MockData) => {
-    dispatch(setCurrentTrack(track));
+  const setTrack = (track: MockData) => {
+    dispatch(trackActions.setCurrentTrack(track));
+    dispatch(trackActions.setIsPlaying(true));
   };
 
   useEffect(() => {
-    dispatch(setTracks());
+    dispatch(trackActions.setTracks(data));
   }, []);
 
   return (
@@ -43,7 +48,7 @@ export function Playlist() {
 
       <div className={styles.content__playlist}>
         {tracks?.map((track) => (
-          <PlaylistItem key={track._id} track={track} setCurrent={setCurrent} />
+          <PlaylistItem key={track._id} track={track} setCurrent={setTrack} />
         ))}
       </div>
     </>
