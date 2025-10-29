@@ -1,0 +1,29 @@
+.main__nav {
+    width: 244px;
+    background-color: #1C1C1C;
+    padding: 20px 0px 20px 36px;
+    margin-right: 40px;
+}
+
+.nav__menu {
+    display: block;
+    visibility: visible;
+}
+
+.menu__list {
+    padding: 18px 0 10px 0;
+}
+
+.menu__item {
+    padding: 5px 0;
+    margin-bottom: 16px;
+    list-style: none;
+}
+
+.menu__link {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: none;
+}
