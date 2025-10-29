@@ -4,8 +4,8 @@ import { ICircleLinkedList } from '../../types';
 export const initQueue = (list: ICircleLinkedList, tracks: MockData[]) => {
   if (!list.isEmpty()) return;
   tracks.forEach((track) => list.pushBack(track));
-  list.print();
-  list.printBack();
+  //   list.print();
+  //   list.printBack();
 };
 
 export const switchTrack = (
@@ -33,7 +33,7 @@ export const shuffleTracks = (
     [shallow[i], shallow[j]] = [shallow[j], shallow[i]];
   }
   shallow.forEach((track) => list.pushBack(track));
-  list.print();
+  //   list.print();
 };
 
 export const getFirstInQueue = (list: ICircleLinkedList) => {
