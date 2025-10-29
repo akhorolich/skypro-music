@@ -1,0 +1,12 @@
+.trackPlay__dislikeSvg {
+    width: 14.34px;
+    height: 13px;
+    fill: transparent;
+    stroke: #696969;
+}
+
+.trackPlay__dislikeSvg:hover {
+    fill: #696969;
+    stroke: #ffffff;
+    cursor: pointer;
+}

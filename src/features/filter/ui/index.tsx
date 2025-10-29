@@ -1,16 +1,16 @@
 import FilterList from './filter-list/ui';
 import FilterBtn from './filter-btn/ui';
 
-import { type MockData } from '@/shared/model';
+import { useAppSelector } from '@/shared/lib/redux-select-dispatch';
+import { getTracks } from '@/entities/tracks';
 import { filters } from '../config';
 import { selectUniqueItemsFilter } from '../model';
 import { useQueryParams } from '@/shared/lib';
 
 import styles from './styles.module.css';
 
-type filterProps = { filteringTracks: MockData[] };
-
-export function Filter({ filteringTracks }: filterProps) {
+export function Filter() {
+  const tracks = useAppSelector(getTracks);
   const { push } = useQueryParams();
 
   return (
@@ -25,7 +25,7 @@ export function Filter({ filteringTracks }: filterProps) {
         >
           <FilterList
             key={filter.queryName}
-            options={selectUniqueItemsFilter(filteringTracks, filter.queryName)}
+            options={selectUniqueItemsFilter(tracks, filter.queryName)}
             pushSearchParams={push}
           />
         </FilterBtn>

@@ -1,11 +1,29 @@
-import { cn } from '@/shared/lib';
-import { data } from '../../api/mock';
+import { useEffect } from 'react';
 
 import { PlaylistItem } from './playlist-item/ui';
+
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/shared/lib/redux-select-dispatch';
+import { getTracks, setCurrentTrack, setTracks } from '@/entities/tracks';
+import { MockData } from '@/shared/model';
+import { cn } from '@/shared/lib';
 
 import styles from './styles.module.css';
 
 export function Playlist() {
+  const dispatch = useAppDispatch();
+  const tracks = useAppSelector(getTracks);
+
+  const setCurrent = (track: MockData) => {
+    dispatch(setCurrentTrack(track));
+  };
+
+  useEffect(() => {
+    dispatch(setTracks());
+  }, []);
+
   return (
     <>
       <div className={styles.content__title}>
@@ -24,8 +42,8 @@ export function Playlist() {
       </div>
 
       <div className={styles.content__playlist}>
-        {data.map((track) => (
-          <PlaylistItem key={track._id} {...track} />
+        {tracks?.map((track) => (
+          <PlaylistItem key={track._id} track={track} setCurrent={setCurrent} />
         ))}
       </div>
     </>

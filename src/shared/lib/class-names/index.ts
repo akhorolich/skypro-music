@@ -1,4 +1,4 @@
-type cn = (string | Record<string, boolean>)[];
+type cn = Array<string | Record<string, boolean> | undefined>;
 
 export function cn(...args: cn) {
   if (args.every((el) => typeof el === 'string')) return args.join(' ');

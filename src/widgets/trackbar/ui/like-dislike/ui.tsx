@@ -1,4 +1,6 @@
 import { cn } from '@/shared/lib';
+import { Dislike, Like } from '@/shared/ui';
+
 import styles from './styles.module.css';
 
 export function LikeOrDislike() {
@@ -6,14 +8,10 @@ export function LikeOrDislike() {
     <>
       <div className={styles.trackPlay__likeDis}>
         <div className={cn(styles.trackPlay__like, 'btnIcon')}>
-          <svg className={styles.trackPlay__likeSvg}>
-            <use xlinkHref="/icon/sprite.svg#icon-like"></use>
-          </svg>
+          <Like />
         </div>
         <div className={cn(styles.trackPlay__dislike, 'btnIcon')}>
-          <svg className={styles.trackPlay__dislikeSvg}>
-            <use xlinkHref="/icon/sprite.svg#icon-dislike"></use>
-          </svg>
+          <Dislike />
         </div>
       </div>
     </>

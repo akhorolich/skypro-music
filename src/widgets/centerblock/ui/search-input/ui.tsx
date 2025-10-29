@@ -1,3 +1,4 @@
+import { Input } from '@/shared/ui';
 import styles from './styles.module.css';
 
 export function SearchInput() {
@@ -6,8 +7,7 @@ export function SearchInput() {
       <svg className={styles.search__svg}>
         <use xlinkHref="/icon/sprite.svg#icon-search"></use>
       </svg>
-      // move to shared
-      <input
+      <Input
         className={styles.search__text}
         type="search"
         placeholder="Поиск"
