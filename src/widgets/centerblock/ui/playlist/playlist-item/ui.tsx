@@ -1,9 +1,10 @@
 import Link from 'next/link';
 
-import { MockData } from '@/shared/model';
-import { getCurrentTrack } from '@/entities/tracks';
-import { useAppSelector } from '@/shared/lib/redux-select-dispatch';
-import { convertToMin } from '../../../lib/index';
+import type { MockData } from '@/shared/model';
+
+import { trackSelectors } from '@/entities/tracks';
+import { useAppSelector } from '@/shared/lib';
+import { convertToMin } from '@/widgets/centerblock/lib';
 import { cn } from '@/shared/lib';
 
 import { Like } from '@/shared/ui';
@@ -16,9 +17,11 @@ type playlistProps = {
 };
 
 export function PlaylistItem({ track, setCurrent }: playlistProps) {
-  const { isPlaying, value } = useAppSelector(getCurrentTrack);
-  const onpause = !isPlaying && track === value;
-  const listeningNow = isPlaying && track === value;
+  const { isPlaying, currentTrack } = useAppSelector(
+    trackSelectors.getPlayback,
+  );
+  const onpause = !isPlaying && track === currentTrack;
+  const listeningNow = isPlaying && track === currentTrack;
 
   return (
     <div className={styles.playlist__item} onClick={() => setCurrent(track)}>

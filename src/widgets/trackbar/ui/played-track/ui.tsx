@@ -1,10 +1,12 @@
 import Link from 'next/link';
+
+import { useAppSelector } from '@/shared/lib';
+import { trackSelectors } from '@/entities/tracks';
+
 import styles from './styles.module.css';
-import { useAppSelector } from '@/shared/lib/redux-select-dispatch';
-import { getCurrentTrack } from '@/entities/tracks';
 
 export function PlayedTrack() {
-  const track = useAppSelector(getCurrentTrack);
+  const track = useAppSelector(trackSelectors.getPlayback);
 
   return (
     <>
@@ -16,12 +18,12 @@ export function PlayedTrack() {
       <div className={styles.trackPlay__contain}>
         <div className={styles.trackPlay__author}>
           <Link className={styles.trackPlay__authorLink} href="">
-            {track.value?.name || 'тут должно быть название'}
+            {track.currentTrack?.name || null}
           </Link>
         </div>
         <div className={styles.trackPlay__album}>
           <Link className={styles.trackPlay__albumLink} href="">
-            {track.value?.author || 'а тут имя автора'}
+            {track.currentTrack?.album || null}
           </Link>
         </div>
       </div>

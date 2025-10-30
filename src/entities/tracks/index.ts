@@ -1,4 +1,13 @@
 import { tracksSlice } from './model/slice';
 
-export const { setCurrentTrack, setTracks, setIsPlaying } = tracksSlice.actions;
-export const { getTracks, getCurrentTrack } = tracksSlice.selectors;
+export const trackActions = tracksSlice.actions;
+export const trackSelectors = tracksSlice.selectors;
+
+export {
+  initQueue,
+  switchTrack,
+  shuffleTracks,
+  getFirstInQueue,
+  queueList,
+  shuffleQueue,
+} from './model/queue';
