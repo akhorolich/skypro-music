@@ -1,0 +1,8 @@
+#packages and modules
+node_modules
+package-lock*
+.next
+
+#enviroments
+.env
+.env.development
