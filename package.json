@@ -1,13 +1,18 @@
 {
-  "name": "my-app",
+  "name": "skypro-music",
+  "homepage": "https://akhorolich.github.io/skypro-music",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
+    "predeploy": "npm run build && touch out/.nojekyll",
+    "deploy": "gh-pages --dotfiles --dist out",
+    "build": "next build",
     "dev": "next dev",
     "dev-inspect": "NODE_OPTIONS='--inspect' next dev",
-    "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "preview:gh-pages": "rm -r ./out && npm run build && mkdir out/skypro-music && find out -mindepth 1 -maxdepth 1 ! -name skypro-music -exec mv {} out/skypro-music/ \\; && node gh-pages-script.js && npx serve@latest out"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",

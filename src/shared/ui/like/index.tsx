@@ -9,7 +9,9 @@ type likeProps = {
 export function Like({ className = '' }: likeProps) {
   return (
     <svg className={cn(styles.trackPlay__likeSvg, className)}>
-      <use xlinkHref="/icon/sprite.svg#icon-like"></use>
+      <use
+        xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-like`}
+      ></use>
     </svg>
   );
 }

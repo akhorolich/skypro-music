@@ -20,7 +20,9 @@ export function VolumeBar({
         <div className={styles.volume__content}>
           <div className={styles.volume__image} onClick={onMuted}>
             <svg className={styles.volume__svg}>
-              <use xlinkHref="/icon/sprite.svg#icon-volume"></use>
+              <use
+                xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-volume`}
+              ></use>
             </svg>
           </div>
           <div className={cn(styles.volume__progress, 'btn')}>

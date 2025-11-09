@@ -1,3 +1,4 @@
+'use client';
 import { useRef } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/shared/lib';
@@ -32,7 +33,7 @@ export function TrackBar() {
     <div className={styles.bar}>
       <AudioPlayer
         ref={audioRef}
-        controls={true}
+        // controls={true}
         src={playback.currentTrack?.track_file}
         loop={controls.repeatOn}
         autoPlay

@@ -126,7 +126,7 @@ export function usePlayerControls(config: PlayerControlsHook) {
       const currentTime = player.currentTime;
       const trackDuration = player.duration;
       const trackPlayed = (currentTime / trackDuration) * 100;
-      setProgress(trackPlayed);
+      currentTime ? setProgress(trackPlayed) : setProgress(0);
     });
 
   const rewindTrack = (e: React.ChangeEvent<HTMLInputElement>) =>

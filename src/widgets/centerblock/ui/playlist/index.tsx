@@ -1,3 +1,4 @@
+'use client';
 import { useEffect } from 'react';
 
 import {
@@ -41,7 +42,9 @@ export function Playlist() {
         </div>
         <div className={cn(styles.playlistTitle__col, styles.col04)}>
           <svg className={styles.playlistTitle__svg}>
-            <use xlinkHref="/icon/sprite.svg#icon-watch"></use>
+            <use
+              xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-watch`}
+            ></use>
           </svg>
         </div>
       </div>

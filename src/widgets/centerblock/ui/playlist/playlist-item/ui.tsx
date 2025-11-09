@@ -1,14 +1,12 @@
+'use client';
 import Link from 'next/link';
-
 import type { MockData } from '@/shared/model';
 
 import { trackSelectors } from '@/entities/tracks';
 import { useAppSelector } from '@/shared/lib';
 import { convertToMin } from '@/widgets/centerblock/lib';
 import { cn } from '@/shared/lib';
-
 import { Like } from '@/shared/ui';
-
 import styles from './styles.module.css';
 
 type playlistProps = {
@@ -35,7 +33,9 @@ export function PlaylistItem({ track, setCurrent }: playlistProps) {
           >
             {listeningNow || onpause ? null : (
               <svg className={styles.track__titleSvg}>
-                <use xlinkHref="/icon/sprite.svg#icon-note"></use>
+                <use
+                  xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-note`}
+                ></use>
               </svg>
             )}
           </div>

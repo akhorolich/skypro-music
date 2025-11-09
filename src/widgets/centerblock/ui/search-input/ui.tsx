@@ -5,7 +5,9 @@ export function SearchInput() {
   return (
     <div className={styles.centerblock__search}>
       <svg className={styles.search__svg}>
-        <use xlinkHref="/icon/sprite.svg#icon-search"></use>
+        <use
+          xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-search`}
+        ></use>
       </svg>
       <Input
         className={styles.search__text}
