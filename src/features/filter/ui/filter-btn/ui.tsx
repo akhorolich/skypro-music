@@ -1,9 +1,5 @@
-'use client';
-
 import { ReactElement, useRef, useState } from 'react';
-
 import { cn, useClickOutside } from '@/shared/lib';
-
 import styles from './styles.module.css';
 
 type btnProps = {

@@ -1,17 +1,27 @@
-import { Filter } from '@/features/filter';
+'use client';
+import type { Track } from '@/shared/model';
 import { Playlist } from './playlist';
+import { Filter } from '@/features/filter';
 import { SearchInput } from './search-input/ui';
 
 import styles from './styled.module.css';
+import { useEffect } from 'react';
+import { initQueue, queueList } from '@/entities/tracks';
 
-export function Centerblock() {
+export function Centerblock({
+  playlist,
+  title,
+}: {
+  playlist: Track[];
+  title: string;
+}) {
   return (
     <div className={styles.centerblock}>
       <SearchInput />
-      <h2 className={styles.centerblock__h2}>Треки</h2>
-      <Filter />
+      <h2 className={styles.centerblock__h2}>{title}</h2>
+      <Filter playlist={playlist} />
       <div className={styles.centerblock__content}>
-        <Playlist />
+        <Playlist playlist={playlist} />
       </div>
     </div>
   );

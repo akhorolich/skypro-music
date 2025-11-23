@@ -5,7 +5,7 @@ const dev = process.env.NODE_ENV === 'development';
 const nextConfig: NextConfig = {
   basePath: dev ? '' : '/skypro-music',
   assetPrefix: dev ? '' : '/skypro-music',
-  output: 'export',
+  // output: 'export',
   images: {
     unoptimized: true,
   },

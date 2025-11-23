@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import type { MockData } from '@/shared/model';
+import type { Track } from '@/shared/model';
 
 import { trackSelectors } from '@/entities/tracks';
 import { useAppSelector } from '@/shared/lib';
@@ -10,11 +10,11 @@ import { Like } from '@/shared/ui';
 import styles from './styles.module.css';
 
 type playlistProps = {
-  track: MockData;
-  setCurrent: (track: MockData) => void;
+  track: Track;
+  setPlayingNow: (track: Track) => void;
 };
 
-export function PlaylistItem({ track, setCurrent }: playlistProps) {
+export function PlaylistItem({ track, setPlayingNow }: playlistProps) {
   const { isPlaying, currentTrack } = useAppSelector(
     trackSelectors.getPlayback,
   );
@@ -22,7 +22,7 @@ export function PlaylistItem({ track, setCurrent }: playlistProps) {
   const listeningNow = isPlaying && track === currentTrack;
 
   return (
-    <div className={styles.playlist__item} onClick={() => setCurrent(track)}>
+    <div className={styles.playlist__item} onClick={() => setPlayingNow(track)}>
       <div className={styles.playlist__track}>
         <div className={styles.track__title}>
           <div

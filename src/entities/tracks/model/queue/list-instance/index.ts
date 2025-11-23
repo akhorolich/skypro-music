@@ -1,11 +1,11 @@
 import { ICircleLinkedList, ListNodeElement } from '../../types';
-import { MockData } from '@/shared/model';
+import { Track } from '@/shared/model';
 
 class NodeElement implements ListNodeElement {
-  data: MockData | null;
+  data: Track | null;
   next: ListNodeElement | null;
   prev: ListNodeElement | null;
-  constructor(data: MockData | null) {
+  constructor(data: Track | null) {
     this.data = data;
     this.next = null;
     this.prev = null;
@@ -43,13 +43,13 @@ class CircleLinkedList implements ICircleLinkedList {
     this.insertNode(prev, insertingNode);
   }
 
-  pushFront(data: MockData) {
+  pushFront(data: Track) {
     const node = new NodeElement(data);
     this.insertNode(this.barrier, node);
     return node;
   }
 
-  pushBack(data: MockData) {
+  pushBack(data: Track) {
     const node = new NodeElement(data);
     this.insertBefore(this.barrier, node);
     return node;
@@ -116,7 +116,7 @@ class CircleLinkedList implements ICircleLinkedList {
 
   print(): void {
     let node = this.barrier;
-    const result: (MockData | null)[] = [];
+    const result: (Track | null)[] = [];
     for (let i = 0; i < this.length; i++) {
       if (node.next === null || node.next === this.barrier) return;
       result.push(node.next.data);
@@ -127,7 +127,7 @@ class CircleLinkedList implements ICircleLinkedList {
 
   printBack(): void {
     let node = this.barrier;
-    const result: (MockData | null)[] = [];
+    const result: (Track | null)[] = [];
     for (let i = 0; i < this.length; i++) {
       if (node.prev === null || node.prev === this.barrier) return;
       result.push(node.prev.data);

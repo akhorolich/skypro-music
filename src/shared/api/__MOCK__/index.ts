@@ -1,6 +1,6 @@
-import { MockData } from '@/shared/model';
+import { Track } from '@/shared/model';
 
-export const data: MockData[] = [
+export const data: Track[] = [
   {
     _id: 8,
     name: 'Chase',

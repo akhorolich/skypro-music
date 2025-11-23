@@ -9,9 +9,9 @@ import { useQueryParams } from '@/shared/lib';
 import styles from './styles.module.css';
 import { trackSelectors } from '@/entities/tracks';
 import { useAppSelector } from '@/shared/lib/redux-select-dispatch';
+import { Track } from '@/shared/model';
 
-export function Filter() {
-  const tracks = useAppSelector(trackSelectors.getTracks);
+export function Filter({ playlist }: { playlist: Track[] }) {
   return (
     <div className={styles.centerblock__filter}>
       <div className={styles.filter__title}>Искать по:</div>
@@ -23,7 +23,7 @@ export function Filter() {
         >
           <FilterList
             key={filter.queryName}
-            options={selectUniqueItemsFilter(tracks, filter.queryName)}
+            options={selectUniqueItemsFilter(playlist, filter.queryName)}
           />
         </FilterBtn>
       ))}
