@@ -13,8 +13,8 @@ export function Navigation() {
         <div className={styles.nav__menu}>
           <ul className={styles.menu__list}>
             <li className={styles.menu__item}>
-              <Link href="#" className={styles.menu__link}>
-                Главное
+              <Link href="/playlist" className={styles.menu__link}>
+                На главную
               </Link>
             </li>
             <li className={styles.menu__item}>

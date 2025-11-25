@@ -24,8 +24,12 @@ export default async function proxy(request: NextRequest) {
   }
 
   //redirect on main page if User is authenticated
-  if (isPublic && payload?.email && path !== '/') {
-    return NextResponse.redirect(new URL('/', request.url));
+  if (isPublic && payload?.email) {
+    return NextResponse.redirect(new URL('/playlist', request.url));
+  }
+
+  if (path === '/') {
+    return NextResponse.redirect(new URL('/playlist', request.url));
   }
 
   return NextResponse.next();

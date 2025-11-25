@@ -23,7 +23,8 @@ export async function decrypt(session: string | undefined = '') {
     return payload;
   } catch (error) {
     //TODO: HANDLE ERROR
-    console.log('Session decrypt failed:', error);
+    const err = error as Error;
+    console.error('Session decrypt failed:', err.message, err.name);
   }
 }
 
