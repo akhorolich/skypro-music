@@ -18,14 +18,18 @@ export default function SignUp() {
               <img src={`${process.env.BASE_PATH}/logo_modal.png`} alt="logo" />
             </div>
             <input
-              className={cn(styles.modal__input)}
+              className={cn(styles.modal__input, {
+                [styles['error']]: state?.errors?.email ? true : false,
+              })}
               name="email"
               placeholder={
                 state?.errors?.email ? state.errors.email[0] : 'Почта'
               }
             />
             <input
-              className={styles.modal__input}
+              className={cn(styles.modal__input, {
+                [styles['error']]: state?.errors?.username ? true : false,
+              })}
               type="text"
               name="username"
               placeholder={
@@ -33,7 +37,9 @@ export default function SignUp() {
               }
             />
             <input
-              className={styles.modal__input}
+              className={cn(styles.modal__input, {
+                [styles['error']]: state?.errors?.password ? true : false,
+              })}
               type="password"
               name="password"
               placeholder={

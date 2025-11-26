@@ -44,8 +44,7 @@
 }
 
 input.error::placeholder {
-    background-color: red;
-    border-color: red;
+    color: red;
 }
 
 .modal__btnEnter:hover {
@@ -163,7 +162,6 @@ input.error::placeholder {
 .errorContainer {
     display: flex;
     flex-direction: column;
-    gap: 5px;
     font-size: 12px;
     color: red;
 }

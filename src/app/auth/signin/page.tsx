@@ -18,20 +18,25 @@ export default function SignIn() {
               <img src={`${process.env.BASE_PATH}/logo_modal.png`} alt="logo" />
             </div>
             <input
-              className={cn(styles.modal__input, styles.login)}
+              className={cn(styles.modal__input, styles.login, {
+                [styles['error']]: state?.errors?.email ? true : false,
+              })}
               name="email"
               placeholder={
                 state?.errors?.email ? state.errors.email[0] : 'Почта'
               }
             />
             <input
-              className={styles.modal__input}
+              className={cn(styles.modal__input, {
+                [styles['error']]: state?.errors?.password ? true : false,
+              })}
               type="password"
               name="password"
               placeholder={
                 state?.errors?.password ? state.errors.password[0] : 'Пароль'
               }
             />
+            <div className={styles.errorContainer}>{state?.message}</div>
             <button className={styles.modal__btnEnter} disabled={pending}>
               Войти
             </button>
