@@ -2,6 +2,7 @@ import { Navigation } from '@/widgets/navigation';
 import { Sidebar } from '@/widgets/right-sidebar';
 import { TrackBar } from '@/widgets/trackbar';
 import styles from './styles.module.css';
+import { Suspense } from 'react';
 
 export default function PlaylistLayout({
   children,
@@ -13,7 +14,7 @@ export default function PlaylistLayout({
       <div className={styles.container}>
         <div className={styles.main}>
           <Navigation />
-          {children}
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
           <Sidebar />
         </div>
         <TrackBar />

@@ -10,13 +10,16 @@
 */
 
 import { axiosInstance } from '@/shared/api/axios-config';
+import { AxiosError } from 'axios';
 
 export async function getAllTracks() {
   try {
     const res = await axiosInstance.get('/catalog/track/all');
     return res;
   } catch (error) {
-    console.log(error);
+    if (error instanceof AxiosError) {
+      console.log(error.message);
+    }
   }
 }
 export function getTrackById() {}
@@ -29,6 +32,8 @@ export async function getTracksCatalogById(id: string) {
     const res = await axiosInstance.get(`/catalog/selection/${id}/`);
     return res;
   } catch (error) {
-    console.log(error);
+    if (error instanceof AxiosError) {
+      console.log(error.message);
+    }
   }
 }

@@ -29,7 +29,7 @@ export async function signup(state: FormState, formData: FormData) {
   } catch (error) {
     if (error instanceof AxiosError) {
       return {
-        message: error.response?.data.message || 'Unhandled error',
+        message: error.response?.data.message,
       };
     }
   }
@@ -38,8 +38,8 @@ export async function signup(state: FormState, formData: FormData) {
 
 export async function signin(state: FormState, formData: FormData) {
   const validateFields = SignInZodSchema.safeParse({
-    password: formData.get('password'),
-    email: formData.get('email'),
+    password: formData.get('password') as string,
+    email: formData.get('email') as string,
   });
 
   if (!validateFields.success) {
@@ -63,7 +63,7 @@ export async function signin(state: FormState, formData: FormData) {
       };
     }
   }
-  redirect('/playlist');
+  redirect('/');
 }
 
 export async function logout() {

@@ -5,8 +5,6 @@ import { Filter } from '@/features/filter';
 import { SearchInput } from './search-input/ui';
 
 import styles from './styled.module.css';
-import { useEffect } from 'react';
-import { initQueue, queueList } from '@/entities/tracks';
 
 export function Centerblock({
   playlist,

@@ -1,13 +1,19 @@
 'use client';
+import { useActionState, useRef, useState } from 'react';
 import Link from 'next/link';
 
 import { cn } from '@/shared/lib';
 import { signin } from '@/entities/auth/action';
-import { useActionState } from 'react';
 import styles from './styles.module.css';
 
 export default function SignIn() {
+  const [formFields, setFormFields] = useState({ email: '', password: '' });
   const [state, action, pending] = useActionState(signin, undefined);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -18,25 +24,29 @@ export default function SignIn() {
               <img src={`${process.env.BASE_PATH}/logo_modal.png`} alt="logo" />
             </div>
             <input
-              className={cn(styles.modal__input, styles.login, {
-                [styles['error']]: state?.errors?.email ? true : false,
-              })}
+              className={cn(styles.modal__input, styles.login)}
               name="email"
-              placeholder={
-                state?.errors?.email ? state.errors.email[0] : 'Почта'
-              }
+              placeholder={'Почта'}
+              value={formFields.email}
+              onChange={handleChange}
             />
             <input
-              className={cn(styles.modal__input, {
-                [styles['error']]: state?.errors?.password ? true : false,
-              })}
+              className={cn(styles.modal__input)}
               type="password"
               name="password"
-              placeholder={
-                state?.errors?.password ? state.errors.password[0] : 'Пароль'
-              }
+              placeholder={'Пароль'}
+              value={formFields.password}
+              onChange={handleChange}
             />
-            <div className={styles.errorContainer}>{state?.message}</div>
+            <div className={styles.errorContainer}>
+              <p style={{ margin: '0' }}>{state?.message}</p>
+              <p style={{ margin: '0' }}>
+                {state?.errors?.password ? state.errors.password : null}
+              </p>
+              <p style={{ margin: '0' }}>
+                {state?.errors?.email ? state.errors.email : null}
+              </p>
+            </div>
             <button className={styles.modal__btnEnter} disabled={pending}>
               Войти
             </button>
