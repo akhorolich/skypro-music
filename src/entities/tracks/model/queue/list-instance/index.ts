@@ -71,7 +71,7 @@ class CircleLinkedList implements ICircleLinkedList {
     return data;
   }
 
-  clearList(list: ICircleLinkedList) {
+  async clearList(list: ICircleLinkedList) {
     let node = list.barrier.next;
     while (node && node !== list.barrier) {
       const nextRef = node.next;

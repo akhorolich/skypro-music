@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  reactStrictMode: false,
   // async redirects() {
   //   return [{ source: '/', destination: '/playlist', permanent: true }];
   // },
