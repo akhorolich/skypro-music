@@ -1,12 +1,12 @@
 import { ActivePlayback, Controls } from '@/entities/tracks/model/types';
 import { useAppDispatch } from '@/shared/lib';
-import { MockData } from '@/shared/model';
+import { Track } from '@/shared/model';
 
 const dispatch = useAppDispatch();
 
 export interface PlayerControlsHook {
   ref: React.RefObject<HTMLAudioElement | null>;
-  tracks: MockData[];
+  tracks: Track[];
   playback: ActivePlayback;
   controls: Controls;
   emit: typeof dispatch;

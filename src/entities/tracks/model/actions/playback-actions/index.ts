@@ -1,10 +1,10 @@
 import { PayloadAction, WritableDraft } from '@reduxjs/toolkit';
 import { trackSlice } from '../../types';
-import { MockData } from '@/shared/model';
+import { Track } from '@/shared/model';
 
 export const setTracks = (
   state: WritableDraft<trackSlice>,
-  action: PayloadAction<MockData[]>,
+  action: PayloadAction<Track[]>,
 ) => {
   state.tracks = action.payload;
   state.playback.currentPlaylist = action.payload;
@@ -12,7 +12,7 @@ export const setTracks = (
 
 export function setCurrentTrack(
   state: WritableDraft<trackSlice>,
-  action: PayloadAction<MockData | null>,
+  action: PayloadAction<Track | null>,
 ) {
   state.playback.currentTrack = action.payload;
 }

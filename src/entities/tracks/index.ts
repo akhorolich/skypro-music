@@ -1,5 +1,4 @@
 import { tracksSlice } from './model/slice';
-
 export const trackActions = tracksSlice.actions;
 export const trackSelectors = tracksSlice.selectors;
 

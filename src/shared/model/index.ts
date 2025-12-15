@@ -1,1 +1,1 @@
-export type { MockData } from './types';
+export type { Track } from './types';

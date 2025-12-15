@@ -1,17 +1,20 @@
-'use client';
 import { Navigation } from '@/widgets/navigation';
-import { Centerblock } from '@/widgets/centerblock';
 import { Sidebar } from '@/widgets/right-sidebar';
 import { TrackBar } from '@/widgets/trackbar';
 import styles from './styles.module.css';
+import { Suspense } from 'react';
 
-export default function MainPage() {
+export default function PlaylistLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.main}>
           <Navigation />
-          <Centerblock />
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
           <Sidebar />
         </div>
         <TrackBar />

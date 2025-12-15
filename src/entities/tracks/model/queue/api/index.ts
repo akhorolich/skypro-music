@@ -1,11 +1,11 @@
-import { MockData } from '@/shared/model';
+import { Track } from '@/shared/model';
 import { ICircleLinkedList } from '../../types';
 
-export const initQueue = (list: ICircleLinkedList, tracks: MockData[]) => {
-  if (!list.isEmpty()) return;
+export const initQueue = async (list: ICircleLinkedList, tracks: Track[]) => {
+  // if (!list.isEmpty()) return;
+  await list.clearList(list);
   tracks.forEach((track) => list.pushBack(track));
-  //   list.print();
-  //   list.printBack();
+  list.print();
 };
 
 export const switchTrack = (
@@ -19,10 +19,10 @@ export const switchTrack = (
 
 export const shuffleTracks = (
   list: ICircleLinkedList,
-  tracks: MockData[],
-  currentTrack?: MockData,
+  tracks: Track[],
+  currentTrack?: Track,
 ) => {
-  if (tracks.length === 0) return;
+  if (!tracks || tracks.length === 0) return;
   if (!list.isEmpty()) list.clearList(list);
   if (currentTrack) list.pushFront(currentTrack);
   const shallow = currentTrack
@@ -33,7 +33,6 @@ export const shuffleTracks = (
     [shallow[i], shallow[j]] = [shallow[j], shallow[i]];
   }
   shallow.forEach((track) => list.pushBack(track));
-  //   list.print();
 };
 
 export const getFirstInQueue = (list: ICircleLinkedList) => {

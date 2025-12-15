@@ -1,4 +1,4 @@
-export interface MockData {
+export interface Track {
   _id: number;
   name: string;
   author: string;
@@ -8,5 +8,5 @@ export interface MockData {
   album: string;
   logo?: null;
   track_file: string;
-  stared_user?: never[];
+  stared_user?: number[];
 }
