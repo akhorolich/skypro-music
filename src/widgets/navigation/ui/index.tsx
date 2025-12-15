@@ -18,7 +18,7 @@ export function Navigation() {
               </Link>
             </li>
             <li className={styles.menu__item}>
-              <Link href="/" className={styles.menu__link}>
+              <Link href="/favorites" className={styles.menu__link}>
                 Мой плейлист
               </Link>
             </li>

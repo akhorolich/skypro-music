@@ -1,8 +1,8 @@
-import 'server-only';
+// import 'server-only';
+'use server';
 import { cookies } from 'next/headers';
 import { SignJWT, jwtVerify } from 'jose';
 import { SessionPayload } from '../types';
-import axios from 'axios';
 
 const SESSION = process.env.SESSION_SECRET;
 const ENCODED_KEY = new TextEncoder().encode(SESSION);
@@ -24,7 +24,7 @@ export async function decrypt(session: string | undefined = '') {
   } catch (error) {
     //TODO: HANDLE ERROR
     const err = error as Error;
-    console.error('Session decrypt failed:', err.message, err.name);
+    console.log('Session decrypt failed:', err.message, err.name);
   }
 }
 
@@ -57,16 +57,13 @@ export async function getSession() {
   const session = (await cookies()).get('session')?.value;
   try {
     const payload = await decrypt(session);
-    return payload;
+    const result: SessionPayload = {
+      refresh: payload?.refresh as string,
+      access: payload?.access as string,
+      email: payload?.email as string,
+    };
+    return result;
   } catch (error) {
     console.log(error);
   }
 }
-
-// export async function updateSession(refreshToken: string) {
-//   try {
-//     const newToken = await axios.post('/api/refresh', {
-//       refresh: refreshToken,
-//     });
-//   } catch (error) {}
-// }

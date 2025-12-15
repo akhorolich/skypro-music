@@ -2,7 +2,7 @@
 import { useActionState, useState } from 'react';
 import Link from 'next/link';
 
-import { signup } from '@/entities/auth/action';
+import { signup } from '@/entities/auth/form-action';
 import { cn } from '@/shared/lib';
 import styles from './styles.module.css';
 

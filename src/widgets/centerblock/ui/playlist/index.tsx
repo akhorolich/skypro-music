@@ -1,23 +1,35 @@
 'use client';
+import { useEffect } from 'react';
 import type { Track } from '@/shared/model';
-import { initQueue, queueList, trackActions } from '@/entities/tracks';
-import { useAppDispatch } from '@/shared/lib';
+import {
+  initQueue,
+  queueList,
+  trackActions,
+  trackSelectors,
+} from '@/entities/tracks';
+import { useAppDispatch, useAppSelector } from '@/shared/lib';
 import { cn } from '@/shared/lib';
 
 import { PlaylistItem } from './playlist-item/ui';
 import styles from './styles.module.css';
-import { useEffect } from 'react';
 
-export function Playlist({ playlist = [] }: { playlist: Track[] }) {
+export function Playlist({
+  playlist = [],
+  tag = 'common',
+}: {
+  playlist: Track[];
+  tag: string;
+}) {
+  const playback = useAppSelector(trackSelectors.getPlayback);
   const dispatch = useAppDispatch();
   const setPlayingNow = (track: Track) => {
     dispatch(trackActions.setCurrentTrack(track));
     dispatch(trackActions.setIsPlaying(true));
   };
-
   useEffect(() => {
     dispatch(trackActions.setTracks(playlist));
     initQueue(queueList, playlist);
+    if (tag === 'favorites') dispatch(trackActions.setFavoriteTracks(playlist));
   }, []);
 
   return (
@@ -40,13 +52,22 @@ export function Playlist({ playlist = [] }: { playlist: Track[] }) {
       </div>
 
       <div className={styles.content__playlist}>
-        {playlist?.map((track) => (
-          <PlaylistItem
-            key={track._id}
-            track={track}
-            setPlayingNow={setPlayingNow}
-          />
-        ))}
+        {tag === 'common' &&
+          playlist.map((track) => (
+            <PlaylistItem
+              key={track._id}
+              track={track}
+              setPlayingNow={setPlayingNow}
+            />
+          ))}
+        {tag === 'favorites' &&
+          playback.favorite.map((track) => (
+            <PlaylistItem
+              key={track._id}
+              track={track}
+              setPlayingNow={setPlayingNow}
+            />
+          ))}
       </div>
     </>
   );

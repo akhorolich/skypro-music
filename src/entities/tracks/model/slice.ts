@@ -13,6 +13,9 @@ import {
   setTracks,
   setCurrentTrack,
   setIsPlaying,
+  setFavoriteTracks,
+  setLikeOnTrack,
+  deleteLikeOnTrack,
 } from './actions/playback-actions';
 
 const initialState: trackSlice = {
@@ -20,6 +23,7 @@ const initialState: trackSlice = {
   playback: {
     isPlaying: false,
     currentPlaylist: [],
+    favorite: [],
     currentTrack: null,
     duration: 0,
   },
@@ -42,6 +46,9 @@ const slice = createSlice({
   reducers: {
     setTracks,
     setCurrentTrack,
+    setFavoriteTracks,
+    setLikeOnTrack,
+    deleteLikeOnTrack,
     setIsPlaying,
     shuffleOn,
     repeatOn,

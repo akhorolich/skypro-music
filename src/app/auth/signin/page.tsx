@@ -3,7 +3,7 @@ import { useActionState, useRef, useState } from 'react';
 import Link from 'next/link';
 
 import { cn } from '@/shared/lib';
-import { signin } from '@/entities/auth/action';
+import { signin } from '@/entities/auth/form-action';
 import styles from './styles.module.css';
 
 export default function SignIn() {

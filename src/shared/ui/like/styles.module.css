@@ -6,7 +6,11 @@
 }
 
 .trackPlay__likeSvg:hover {
-    fill: #696969;
+    fill: #AD61FF;
     stroke: #ffffff;
     cursor: pointer;
+}
+
+.liked {
+    fill: #AD61FF;
 }
