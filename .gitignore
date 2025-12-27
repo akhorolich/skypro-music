@@ -9,3 +9,6 @@ package-lock*
 #enviroments
 .env
 .env.development
+
+#others
+todo.md

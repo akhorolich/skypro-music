@@ -35,7 +35,7 @@ export async function createSession(data: SessionPayload) {
 
   store.set('session', session, {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
     expires: expiresAt,
     path: '/',
     sameSite: 'strict',
@@ -46,7 +46,7 @@ export async function deleteSession() {
   const store = await cookies();
   store.set('session', '', {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
     expires: 0,
     path: '/',
     sameSite: 'strict',

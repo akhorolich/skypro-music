@@ -8,7 +8,8 @@ const nextConfig: NextConfig = {
   assetPrefix: dev ? '' : '/skypro-music',
   env: {
     BASE_PATH: dev ? '' : '/skypro-music',
-    BASE_API: 'https://webdev-music-003b5b991590.herokuapp.com',
+    BASE_API: process.env.BASE_API,
+    SESSION_SECRET: process.env.SESSION_SECRET,
   },
   images: {
     unoptimized: true,

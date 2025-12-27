@@ -1,6 +1,6 @@
 'use client';
 import { Suspense, useEffect } from 'react';
-import { getSession } from '@/entities/auth/lib';
+import { getClientSession } from '@/entities/auth/lib/client';
 import { useAppDispatch } from '@/shared/lib';
 import { authorizationActions } from '@/entities/auth';
 
@@ -19,8 +19,8 @@ export default function PlaylistLayout({
   useEffect(() => {
     const auth = async () => {
       try {
-        const session = await getSession();
-        if (!session) throw new Error('Auth error PlaylistLayout');
+        const session = await getClientSession();
+        if (!session) return;
         dispatch(authorizationActions.setIsAuth(true));
         dispatch(
           authorizationActions.setAuthToken({
@@ -30,7 +30,7 @@ export default function PlaylistLayout({
         );
         dispatch(authorizationActions.setUsername(session.email));
       } catch (error) {
-        console.log(error);
+        console.log('PlaylistLayout auth error:', error);
       }
     };
     auth();
