@@ -5,6 +5,7 @@ import { removeSession } from '@/entities/auth/form-action';
 import { SidebarItem } from './sidebar-item/ui';
 import { LogoutIcon } from './logout-icon/ui';
 import styles from './styles.module.css';
+import { trackActions } from '@/entities/tracks';
 
 export function Sidebar() {
   const login = useAppSelector(authorizationSelectors.username);
@@ -15,6 +16,7 @@ export function Sidebar() {
     dispatch(authorizationActions.setUsername(''));
     dispatch(authorizationActions.setAuthToken({ access: '', refresh: '' }));
     dispatch(authorizationActions.setIsAuth(false));
+    dispatch(trackActions.setFavoriteTracks([]));
     removeSession();
   };
   return (

@@ -12,10 +12,11 @@ import styles from './styles.module.css';
 
 type playlistProps = {
   track: Track;
+  isAuth?: boolean;
   setPlayingNow: (track: Track) => void;
 };
 
-export function PlaylistItem({ track, setPlayingNow }: playlistProps) {
+export function PlaylistItem({ track, isAuth, setPlayingNow }: playlistProps) {
   const { isPlaying, currentTrack } = useAppSelector(
     trackSelectors.getPlayback,
   );
@@ -65,6 +66,7 @@ export function PlaylistItem({ track, setPlayingNow }: playlistProps) {
           <Like
             className={styles.track__timeSvg}
             isLiked={isLike}
+            isAuth={isAuth}
             onClick={toggleLike}
           />
           <span className={styles.track__timeText}>

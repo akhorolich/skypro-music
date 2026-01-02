@@ -1,8 +1,8 @@
 import { Track } from '@/shared/model';
-import { getTracksCatalogById } from '../api';
+import { getTracksCatalogById } from '@/entities/tracks/api/index';
 
 export async function getCatalog(id: string[] | undefined, tracks: Track[]) {
-  let result: { title?: string; tracks: Track[] } = {
+  const result: { title?: string; tracks: Track[] } = {
     tracks: [],
   };
   if (!id || !tracks) return result;

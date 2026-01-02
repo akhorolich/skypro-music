@@ -20,7 +20,7 @@ export default function PlaylistLayout({
     const auth = async () => {
       try {
         const session = await getClientSession();
-        if (!session) return;
+        if (!session?.access) return;
         dispatch(authorizationActions.setIsAuth(true));
         dispatch(
           authorizationActions.setAuthToken({

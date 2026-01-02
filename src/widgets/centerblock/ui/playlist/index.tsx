@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type { Track } from '@/shared/model';
 import {
   initQueue,
@@ -12,6 +12,8 @@ import { cn } from '@/shared/lib';
 
 import { PlaylistItem } from './playlist-item/ui';
 import styles from './styles.module.css';
+import { getAllFavoriteTracks } from '@/entities/tracks/api';
+import { authorizationSelectors } from '@/entities/auth';
 
 export function Playlist({
   playlist = [],
@@ -20,16 +22,29 @@ export function Playlist({
   playlist: Track[];
   tag: string;
 }) {
+  const access = useAppSelector(authorizationSelectors.access);
   const playback = useAppSelector(trackSelectors.getPlayback);
+  const isAuthStore = useAppSelector(authorizationSelectors.isAuth);
+  const [isAuth, setIsAuth] = useState<boolean>(false);
   const dispatch = useAppDispatch();
+
   const setPlayingNow = (track: Track) => {
     dispatch(trackActions.setCurrentTrack(track));
     dispatch(trackActions.setIsPlaying(true));
   };
+
+  useEffect(() => {
+    setIsAuth(isAuthStore);
+  }, [isAuthStore]);
+
   useEffect(() => {
     dispatch(trackActions.setTracks(playlist));
     initQueue(queueList, playlist);
-    if (tag === 'favorites') dispatch(trackActions.setFavoriteTracks(playlist));
+    if (isAuthStore && access) {
+      getAllFavoriteTracks(access).then((favorites) =>
+        dispatch(trackActions.setFavoriteTracks(favorites?.data.data || [])),
+      );
+    }
   }, []);
 
   return (
@@ -57,6 +72,7 @@ export function Playlist({
             <PlaylistItem
               key={track._id}
               track={track}
+              isAuth={isAuth}
               setPlayingNow={setPlayingNow}
             />
           ))}
@@ -65,6 +81,7 @@ export function Playlist({
             <PlaylistItem
               key={track._id}
               track={track}
+              isAuth={isAuth}
               setPlayingNow={setPlayingNow}
             />
           ))}
