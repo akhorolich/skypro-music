@@ -5,3 +5,9 @@ export interface FilterSelection {
   queryName: QueryParams;
   options: string[];
 }
+
+export interface onlyOne {
+  author?: boolean;
+  release_date?: boolean;
+  genre?: boolean;
+}

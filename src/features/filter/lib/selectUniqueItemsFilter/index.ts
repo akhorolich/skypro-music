@@ -1,5 +1,5 @@
 import { Track } from '@/shared/model';
-import { QueryParams } from '../types';
+import { QueryParams } from '../../types';
 
 export function selectUniqueItemsFilter(data: Track[], filter: QueryParams) {
   const filtered = data
