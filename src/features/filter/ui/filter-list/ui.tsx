@@ -8,7 +8,7 @@ type filterListProps = {
 };
 
 export default function FilterList({ options, searchParam }: filterListProps) {
-  const filter = useFilter();
+  const { filter } = useFilter();
 
   const stopBubbling = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
     e.stopPropagation();

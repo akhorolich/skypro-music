@@ -21,7 +21,7 @@
   margin-right: 15px;
 }
 
-/* .filter__button {
+.clear__filters {
   position: relative;
   font-style: normal;
   font-weight: 400;
@@ -30,7 +30,11 @@
   border: 1px solid #ffffff;
   border-radius: 60px;
   padding: 6px 20px;
-} */
+}
+
+.clear__filters_hide {
+  display: none;
+}
 
 /* .filter__button:not(:last-child) {
   margin-right: 10px;

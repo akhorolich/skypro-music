@@ -1,13 +1,19 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { updateQueryValuesFilter } from './updateQueryValuesFilter';
-import { QueryParams } from '../../types';
+import { FilterParams } from '../../types';
+import { useEffect, useState } from 'react';
 
 export const useFilter = () => {
+  const [isFiltered, setIsFiltred] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const searcParams = useSearchParams();
 
-  const createQuery = (query: QueryParams, value: string) => {
+  useEffect(() => {
+    setIsFiltred(() => searcParams.entries().some((value) => value));
+  }, [searcParams]);
+
+  const createQuery = (query: FilterParams, value: string) => {
     const url = new URLSearchParams(searcParams.toString());
     const param = url.get(query);
     const currentFilterValues: string[] = param ? param.split(' ') : [];
@@ -17,6 +23,7 @@ export const useFilter = () => {
       currentFilterValues,
       {
         release_date: true,
+        search: true,
       },
     );
 
@@ -25,9 +32,10 @@ export const useFilter = () => {
     return url.toString();
   };
 
-  const addCategory = (queryName: QueryParams, queryValue: string) => {
+  const addCategory = (queryName: FilterParams, queryValue: string) => {
     const params = createQuery(queryName, queryValue);
     return router.push(pathname + '?' + params);
   };
-  return addCategory;
+
+  return { filter: addCategory, isFiltered };
 };

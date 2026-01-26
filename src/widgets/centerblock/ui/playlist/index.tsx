@@ -9,11 +9,13 @@ import {
 } from '@/entities/tracks';
 import { useAppDispatch, useAppSelector } from '@/shared/lib';
 import { cn } from '@/shared/lib';
+import { getAllFavoriteTracks } from '@/entities/tracks/api';
+import { authorizationSelectors } from '@/entities/auth';
+import { useUrlFilters } from '../../lib';
 
 import { PlaylistItem } from './playlist-item/ui';
 import styles from './styles.module.css';
-import { getAllFavoriteTracks } from '@/entities/tracks/api';
-import { authorizationSelectors } from '@/entities/auth';
+import { useFilter } from '@/features/filter/lib/useFilter';
 
 export function Playlist({
   playlist = [],
@@ -23,10 +25,12 @@ export function Playlist({
   tag: string;
 }) {
   const access = useAppSelector(authorizationSelectors.access);
-  const playback = useAppSelector(trackSelectors.getPlayback);
   const isAuthStore = useAppSelector(authorizationSelectors.isAuth);
+  const playback = useAppSelector(trackSelectors.getPlayback);
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const dispatch = useAppDispatch();
+
+  const { tracksWithFilters, filterByReleaseOn } = useUrlFilters(playlist);
 
   const setPlayingNow = (track: Track) => {
     dispatch(trackActions.setCurrentTrack(track));
@@ -38,14 +42,17 @@ export function Playlist({
   }, [isAuthStore]);
 
   useEffect(() => {
-    dispatch(trackActions.setTracks(playlist));
-    initQueue(queueList, playlist);
-    if (isAuthStore && access) {
-      getAllFavoriteTracks(access).then((favorites) =>
-        dispatch(trackActions.setFavoriteTracks(favorites?.data.data || [])),
-      );
-    }
-  }, []);
+    const initTrackQueue = async () => {
+      dispatch(trackActions.setTracks(tracksWithFilters));
+      initQueue(queueList, tracksWithFilters);
+      if (isAuthStore && access) {
+        getAllFavoriteTracks(access).then((favorites) =>
+          dispatch(trackActions.setFavoriteTracks(favorites?.data.data || [])),
+        );
+      }
+    };
+    initTrackQueue();
+  }, [tracksWithFilters.length, filterByReleaseOn]);
 
   return (
     <>
@@ -68,7 +75,7 @@ export function Playlist({
 
       <div className={styles.content__playlist}>
         {tag === 'common' &&
-          playlist.map((track) => (
+          tracksWithFilters.map((track) => (
             <PlaylistItem
               key={track._id}
               track={track}
