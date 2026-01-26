@@ -1,6 +1,6 @@
 'use server';
 import { AxiosError } from 'axios';
-import { redirect } from 'next/navigation';
+import { redirect, RedirectType } from 'next/navigation';
 
 import { FormState } from './types';
 import {
@@ -66,7 +66,11 @@ export async function signin(state: FormState, formData: FormData) {
   redirect('/');
 }
 
-export async function logout() {
+export async function removeSession() {
   await deleteSession();
-  redirect('/auth/signin');
+  try {
+    await redirect('/', RedirectType.replace);
+  } catch (error) {
+    console.log(error);
+  }
 }

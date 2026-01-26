@@ -1,30 +1,37 @@
 'use client';
 import Link from 'next/link';
 import type { Track } from '@/shared/model';
-
+import { useLike } from '@/shared/lib/use-like';
 import { trackSelectors } from '@/entities/tracks';
 import { useAppSelector } from '@/shared/lib';
 import { convertToMin } from '@/widgets/centerblock/lib';
 import { cn } from '@/shared/lib';
+
 import { Like } from '@/shared/ui';
 import styles from './styles.module.css';
 
 type playlistProps = {
   track: Track;
+  isAuth?: boolean;
   setPlayingNow: (track: Track) => void;
 };
 
-export function PlaylistItem({ track, setPlayingNow }: playlistProps) {
+export function PlaylistItem({ track, isAuth, setPlayingNow }: playlistProps) {
   const { isPlaying, currentTrack } = useAppSelector(
     trackSelectors.getPlayback,
   );
-  const onpause = !isPlaying && track === currentTrack;
-  const listeningNow = isPlaying && track === currentTrack;
+  const { isLike, errorMsg, toggleLike } = useLike(track);
+
+  const onpause = !isPlaying && track._id === currentTrack?._id;
+  const listeningNow = isPlaying && track._id === currentTrack?._id;
 
   return (
-    <div className={styles.playlist__item} onClick={() => setPlayingNow(track)}>
+    <div className={styles.playlist__item}>
       <div className={styles.playlist__track}>
-        <div className={styles.track__title}>
+        <div
+          className={styles.track__title}
+          onClick={() => setPlayingNow(track)}
+        >
           <div
             className={cn(styles.track__titleImage, {
               [styles.playing]: listeningNow,
@@ -56,7 +63,12 @@ export function PlaylistItem({ track, setPlayingNow }: playlistProps) {
           </Link>
         </div>
         <div>
-          <Like className={styles.track__timeSvg} />
+          <Like
+            className={styles.track__timeSvg}
+            isLiked={isLike}
+            isAuth={isAuth}
+            onClick={toggleLike}
+          />
           <span className={styles.track__timeText}>
             {convertToMin(track.duration_in_seconds)}
           </span>

@@ -1,18 +1,19 @@
 'use client';
 import { useRef } from 'react';
 
-import { useAppDispatch, useAppSelector } from '@/shared/lib';
+import { cn, useAppDispatch, useAppSelector } from '@/shared/lib';
 import { trackSelectors } from '@/entities/tracks';
 import { usePlayerControls } from '@/features/audio';
 
 import { VolumeBar } from './volume-bar/ui';
 import { ProgressBar } from './progress-bar/ui';
 import { PlayerControls } from './player-controls/ui';
-import { LikeOrDislike } from './like-dislike/ui';
 import { PlayedTrack } from './played-track/ui';
 import { AudioPlayer } from '@/shared/ui/audio';
 
 import styles from './styles.module.css';
+import { Like } from '@/shared/ui';
+import { useLike } from '@/shared/lib/use-like';
 
 export function TrackBar() {
   const dispatch = useAppDispatch();
@@ -29,11 +30,12 @@ export function TrackBar() {
     emit: dispatch,
   });
 
+  const { isLike, toggleLike } = useLike(playback.currentTrack);
+
   return (
     <div className={styles.bar}>
       <AudioPlayer
         ref={audioRef}
-        // controls={true}
         src={playback.currentTrack?.track_file}
         loop={controls.repeatOn}
         autoPlay
@@ -61,7 +63,11 @@ export function TrackBar() {
             />
             <div className={styles.player__trackPlay}>
               <PlayedTrack />
-              <LikeOrDislike />
+              <div className={styles.trackPlay__likeDis}>
+                <div className={cn(styles.trackPlay__like, 'btnIcon')}>
+                  <Like className={''} isLiked={isLike} onClick={toggleLike} />
+                </div>
+              </div>
             </div>
           </div>
           <VolumeBar

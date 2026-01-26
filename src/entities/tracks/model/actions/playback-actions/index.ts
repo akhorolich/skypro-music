@@ -10,6 +10,31 @@ export const setTracks = (
   state.playback.currentPlaylist = action.payload;
 };
 
+export function setFavoriteTracks(
+  state: WritableDraft<trackSlice>,
+  action: PayloadAction<Track[]>,
+) {
+  state.playback.favorite = action.payload;
+}
+
+export function setLikeOnTrack(
+  state: WritableDraft<trackSlice>,
+  action: PayloadAction<Track>,
+) {
+  state.playback.favorite = [...state.playback.favorite, action.payload];
+}
+
+export function deleteLikeOnTrack(
+  state: WritableDraft<trackSlice>,
+  action: PayloadAction<Track>,
+) {
+  state.playback.favorite = [
+    ...state.playback.favorite.filter(
+      (track) => track._id !== action.payload._id,
+    ),
+  ];
+}
+
 export function setCurrentTrack(
   state: WritableDraft<trackSlice>,
   action: PayloadAction<Track | null>,

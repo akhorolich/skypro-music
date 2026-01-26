@@ -11,11 +11,13 @@ export default async function CatalogPlaylist({
   const { id } = await params;
   const tracks = await getAllTracks();
   const catalog = await getCatalog(id, tracks?.data.data);
-
   return (
     <Centerblock
       title={catalog.title ? catalog.title : 'Треки'}
-      playlist={id ? catalog.tracks : tracks?.data.data}
+      playlistData={{
+        tag: 'common',
+        playlist: id ? catalog.tracks : tracks?.data.data || [],
+      }}
     />
   );
 }

@@ -35,9 +35,9 @@ export async function jwt(body: SignInDTO) {
 
 export async function refreshJwt(body: { refresh: string }) {
   try {
-    const res = await axiosInstance.post('/user/token/', body);
+    const res = await axiosInstance.post('/user/token/refresh/', body);
     return res.data;
   } catch (error) {
-    throw error;
+    console.log(error);
   }
 }

@@ -10,6 +10,7 @@ export interface ActivePlayback {
   isPlaying: boolean;
   currentTrack: Track | null;
   currentPlaylist: Track[];
+  favorite: Track[];
   duration: number;
 }
 

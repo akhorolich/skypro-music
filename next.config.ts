@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   assetPrefix: dev ? '' : '/skypro-music',
   env: {
     BASE_PATH: dev ? '' : '/skypro-music',
+    BASE_API: process.env.BASE_API,
+    SESSION_SECRET: process.env.SESSION_SECRET,
   },
   images: {
     unoptimized: true,
