@@ -6,17 +6,18 @@ import { getAllTracks } from '@/entities/tracks/api';
 export default async function CatalogPlaylist({
   params,
 }: {
-  params: Promise<{ id?: string[] }>;
+  params: Promise<{ id: string[] }>;
 }) {
   const { id } = await params;
   const tracks = await getAllTracks();
-  const catalog = await getCatalog(id, tracks?.data.data);
+  const catalogData = await getCatalog(id, tracks?.data.data || []);
+
   return (
     <Centerblock
-      title={catalog.title ? catalog.title : 'Треки'}
+      title={catalogData.title || 'Тут должно было быть название каталога'}
       playlistData={{
         tag: 'common',
-        playlist: id ? catalog.tracks : tracks?.data.data || [],
+        playlist: catalogData.tracks,
       }}
     />
   );
