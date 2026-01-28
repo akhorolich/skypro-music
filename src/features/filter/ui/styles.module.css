@@ -35,32 +35,3 @@
 .clear__filters_hide {
   display: none;
 }
-
-/* .filter__button:not(:last-child) {
-  margin-right: 10px;
-} */
-/* ----------------------------------- */
-/* .filter__details {
-  composes: btn-text from '/src/UI/Button/button.module.css';
-  position: relative;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  border: 1px solid #ffffff;
-  border-radius: 60px;
-  padding: 6px 20px;
-}
-
-.filter__details:not(:last-child) {
-  margin-right: 10px;
-}
-
-.filter__details:open {
-  color: #b672ff;
-  border-color: #b672ff;
-}
-
-.filter__button::marker {
-  content: "";
-} */

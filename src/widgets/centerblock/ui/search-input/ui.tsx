@@ -5,6 +5,7 @@ import { debounce } from '@/shared/lib/debounce';
 
 import { Input } from '@/shared/ui';
 import styles from './styles.module.css';
+import { cn } from '@/shared/lib';
 
 export function SearchInput() {
   const { filter } = useFilter();
@@ -17,7 +18,6 @@ export function SearchInput() {
     setSearchQuery(value);
     debounecedAddCategory('search', value);
   };
-  console.log(searchQuery);
 
   return (
     <div className={styles.centerblock__search}>
@@ -27,7 +27,7 @@ export function SearchInput() {
         ></use>
       </svg>
       <Input
-        className={styles.search__text}
+        className={cn(styles['ps__text'], styles.search__text)}
         type="search"
         placeholder="Поиск"
         name="search"

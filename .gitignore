@@ -13,3 +13,4 @@ package-lock*
 #others
 todo.md
 .vscode
+.swc

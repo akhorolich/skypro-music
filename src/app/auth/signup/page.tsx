@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { signup } from '@/entities/auth/form-action';
 import { cn } from '@/shared/lib';
 import styles from './styles.module.css';
+import { Input } from '@/shared/ui';
 
 export default function SignUp() {
   const [formFields, setFormFields] = useState({
@@ -25,20 +26,21 @@ export default function SignUp() {
             <div className={styles.modal__logo}>
               <img src={`${process.env.BASE_PATH}/logo_modal.png`} alt="logo" />
             </div>
-            <input
+            <Input
               className={cn(styles.modal__input)}
+              type="text"
               name="email"
               placeholder={'Почта'}
               onChange={handleChange}
             />
-            <input
+            <Input
               className={cn(styles.modal__input)}
               type="text"
               name="username"
               placeholder={'Логин'}
               onChange={handleChange}
             />
-            <input
+            <Input
               className={cn(styles.modal__input)}
               type="password"
               name="password"
@@ -46,14 +48,14 @@ export default function SignUp() {
               onChange={handleChange}
             />
             <div className={styles.errorContainer}>
-              <p style={{ margin: '0' }}>{state?.message}</p>
-              <p style={{ margin: '0' }}>
+              <p className={styles.error_margin}>{state?.message}</p>
+              <p className={styles.error_margin}>
                 {state?.errors?.username ? state.errors.username : null}
               </p>
-              <p style={{ margin: '0' }}>
+              <p className={styles.error_margin}>
                 {state?.errors?.password ? state.errors.password : null}
               </p>
-              <p style={{ margin: '0' }}>
+              <p className={styles.error_margin}>
                 {state?.errors?.email ? state.errors.email : null}
               </p>
             </div>
