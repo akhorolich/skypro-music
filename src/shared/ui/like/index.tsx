@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 type likeProps = {
   className?: string;
-  isLiked: boolean;
+  isLiked?: boolean;
   isAuth?: boolean;
   onClick?: () => void;
 };

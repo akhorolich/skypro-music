@@ -1,16 +1,5 @@
-/* 
-Получить все треки 	GET - /catalog/track/all/
-Получить трек по id 	GET - /catalog/track/<id>/
-Просмотреть избранное * 	GET - /catalog/track/favorite/all/
-Добавить трек в избранное по id * 	POST - /catalog/track/<id>/favorite/
-Удалить трек из избранного по id * 	DELETE - /catalog/track/<id>/favorite/
-Создать подборкy * 	POST - /catalog/selection
-Просмотреть подборки 	GET - /catalog/selection/all
-Просмотреть подборку по id 	GET - /catalog/selection/<id>/
-*/
-
 import { axiosInstance } from '@/shared/api/axios-config';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 
 export async function getAllTracks() {
   try {

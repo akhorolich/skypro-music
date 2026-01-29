@@ -4,8 +4,11 @@ import { Burger } from './burger/ui';
 import { Logo } from './logo/ui';
 
 import styles from './styles.module.css';
+import { useAppSelector } from '@/shared/lib';
+import { authorizationSelectors } from '@/entities/auth';
 
 export function Navigation() {
+  const isAuth = useAppSelector(authorizationSelectors.isAuth);
   return (
     <nav className={styles.main__nav}>
       <Logo />
@@ -22,7 +25,7 @@ export function Navigation() {
                 Мой плейлист
               </Link>
             </li>
-            <li className={styles.menu__item}>
+            <li className={styles.menu__item} hidden={isAuth}>
               <Link href="/auth/signin" className={styles.menu__link}>
                 Войти
               </Link>

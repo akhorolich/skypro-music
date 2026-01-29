@@ -8,7 +8,7 @@ export function useClickOutside(
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as Node;
-      if (!selectRef.current?.contains(target)) {
+      if (selectRef.current && !selectRef.current?.contains(target)) {
         setter(false);
       }
     };

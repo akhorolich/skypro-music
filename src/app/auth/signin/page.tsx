@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { cn } from '@/shared/lib';
 import { signin } from '@/entities/auth/form-action';
 import styles from './styles.module.css';
+import { Input } from '@/shared/ui';
 
 export default function SignIn() {
   const [formFields, setFormFields] = useState({ email: '', password: '' });
@@ -23,14 +24,15 @@ export default function SignIn() {
             <div className={styles.modal__logo}>
               <img src={`${process.env.BASE_PATH}/logo_modal.png`} alt="logo" />
             </div>
-            <input
+            <Input
               className={cn(styles.modal__input, styles.login)}
+              type="text"
               name="email"
               placeholder={'Почта'}
               value={formFields.email}
               onChange={handleChange}
             />
-            <input
+            <Input
               className={cn(styles.modal__input)}
               type="password"
               name="password"
@@ -39,11 +41,11 @@ export default function SignIn() {
               onChange={handleChange}
             />
             <div className={styles.errorContainer}>
-              <p style={{ margin: '0' }}>{state?.message}</p>
-              <p style={{ margin: '0' }}>
+              <p className={styles.error_margin}>{state?.message}</p>
+              <p className={styles.error_margin}>
                 {state?.errors?.password ? state.errors.password : null}
               </p>
-              <p style={{ margin: '0' }}>
+              <p className={styles.error_margin}>
                 {state?.errors?.email ? state.errors.email : null}
               </p>
             </div>

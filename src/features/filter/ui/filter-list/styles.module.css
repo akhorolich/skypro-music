@@ -33,10 +33,6 @@
     }
 }
 
-/* .filter__list a {
-    color: #fff;
-} */
-
 .filter__list li:hover {
     color: #b672ff;
     border-color: #b672ff;
