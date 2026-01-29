@@ -2,10 +2,8 @@ import { Track } from '@/shared/model';
 import { ICircleLinkedList } from '../../types';
 
 export const initQueue = async (list: ICircleLinkedList, tracks: Track[]) => {
-  // if (!list.isEmpty()) return;
   await list.clearList(list);
   tracks.forEach((track) => list.pushBack(track));
-  list.print();
 };
 
 export const switchTrack = (

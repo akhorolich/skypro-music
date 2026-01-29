@@ -20,7 +20,7 @@ export function Navigation() {
                 На главную
               </Link>
             </li>
-            <li className={styles.menu__item}>
+            <li className={styles.menu__item} hidden={!isAuth}>
               <Link href="/favorites" className={styles.menu__link}>
                 Мой плейлист
               </Link>
