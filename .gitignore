@@ -10,6 +10,6 @@ node_modules
 .env.development
 
 #others
-todo.md
 .vscode
 .swc
+.vercel

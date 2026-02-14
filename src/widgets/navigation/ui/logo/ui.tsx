@@ -8,7 +8,7 @@ export function Logo() {
         width={250}
         height={170}
         className={styles.logo__image}
-        src={`${process.env.BASE_PATH}/logo.png`}
+        src={`/logo.png`}
         alt={'logo'}
       />
     </div>

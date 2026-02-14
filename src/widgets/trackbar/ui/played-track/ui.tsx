@@ -13,9 +13,7 @@ export function PlayedTrack() {
     <>
       <div className={styles.trackPlay__image}>
         <svg className={styles.trackPlay__svg}>
-          <use
-            xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-note`}
-          ></use>
+          <use xlinkHref={`/icon/sprite.svg#icon-note`}></use>
         </svg>
       </div>
       <div className={styles.trackPlay__contain}>

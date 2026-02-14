@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import { SignJWT, jwtVerify } from 'jose';
 import { SessionPayload } from '../types';
 
-const SESSION = process.env.SESSION_SECRET;
+const SESSION = process.env.NEXT_PUBLIC_SESSION_SECRET;
 const ENCODED_KEY = new TextEncoder().encode(SESSION);
 
 export async function encrypt(payload: SessionPayload) {

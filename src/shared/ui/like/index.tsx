@@ -23,7 +23,7 @@ export function Like({
       onClick={onClick}
     >
       <use
-        xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-${isAuth ? 'like' : 'dislike'}`}
+        xlinkHref={`/icon/sprite.svg#icon-${isAuth ? 'like' : 'dislike'}`}
       ></use>
     </svg>
   );

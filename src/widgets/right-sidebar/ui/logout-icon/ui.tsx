@@ -5,9 +5,7 @@ export function LogoutIcon({ logout }: { logout: () => void }) {
     <>
       <div className={styles.sidebar__icon} onClick={logout}>
         <svg>
-          <use
-            xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#logout`}
-          ></use>
+          <use xlinkHref={`/icon/sprite.svg#logout`}></use>
         </svg>
       </div>
     </>

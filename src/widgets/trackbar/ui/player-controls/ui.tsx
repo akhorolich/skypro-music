@@ -31,31 +31,23 @@ export function PlayerControls({
       <div className={styles.player__controls}>
         <div className={styles.player__btnPrev} onClick={onPrev}>
           <svg className={styles.player__btnPrevSvg}>
-            <use
-              xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-prev`}
-            ></use>
+            <use xlinkHref={`/icon/sprite.svg#icon-prev`}></use>
           </svg>
         </div>
         <div className={cn(styles.player__btnPlay, 'btn')} onClick={onToggle}>
           {isPlaying ? (
             <svg className={styles.player__btnPlaySvg}>
-              <use
-                xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-pause`}
-              ></use>
+              <use xlinkHref={`/icon/sprite.svg#icon-pause`}></use>
             </svg>
           ) : (
             <svg className={styles.player__btnPlaySvg}>
-              <use
-                xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-play`}
-              ></use>
+              <use xlinkHref={`/icon/sprite.svg#icon-play`}></use>
             </svg>
           )}
         </div>
         <div className={styles.player__btnNext} onClick={onNext}>
           <svg className={styles.player__btnNextSvg}>
-            <use
-              xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-next`}
-            ></use>
+            <use xlinkHref={`/icon/sprite.svg#icon-next`}></use>
           </svg>
         </div>
         <div
@@ -67,9 +59,7 @@ export function PlayerControls({
               [styles.active]: repeatOn,
             })}
           >
-            <use
-              xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-repeat`}
-            ></use>
+            <use xlinkHref={`/icon/sprite.svg#icon-repeat`}></use>
           </svg>
         </div>
         <div
@@ -81,9 +71,7 @@ export function PlayerControls({
               [styles.active]: shuffleOn,
             })}
           >
-            <use
-              xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-shuffle`}
-            ></use>
+            <use xlinkHref={`/icon/sprite.svg#icon-shuffle`}></use>
           </svg>
         </div>
       </div>
