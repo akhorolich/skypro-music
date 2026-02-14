@@ -40,9 +40,7 @@ export function PlaylistItem({ track, isAuth, setPlayingNow }: playlistProps) {
           >
             {listeningNow || onpause ? null : (
               <svg className={styles.track__titleSvg}>
-                <use
-                  xlinkHref={`${process.env.BASE_PATH}/icon/sprite.svg#icon-note`}
-                ></use>
+                <use xlinkHref={`/icon/sprite.svg#icon-note`}></use>
               </svg>
             )}
           </div>

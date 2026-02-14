@@ -22,7 +22,7 @@ export default function SignIn() {
         <div className={styles.modal__block}>
           <form className={styles.modal__form} action={action}>
             <div className={styles.modal__logo}>
-              <img src={`${process.env.BASE_PATH}/logo_modal.png`} alt="logo" />
+              <img src={`/logo_modal.png`} alt="logo" />
             </div>
             <Input
               className={cn(styles.modal__input, styles.login)}

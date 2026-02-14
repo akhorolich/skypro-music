@@ -29,17 +29,17 @@ export function Sidebar() {
         <div className={styles.sidebar__list}>
           <SidebarItem
             hrefPath="/2"
-            imgPath={`${process.env.BASE_PATH}/playlist01.png`}
+            imgPath={`/playlist01.png`}
             alt="Day's playlist"
           />
           <SidebarItem
             hrefPath="/3"
-            imgPath={`${process.env.BASE_PATH}/playlist02.png`}
+            imgPath={`/playlist02.png`}
             alt="Day's playlist"
           />
           <SidebarItem
             hrefPath="/4"
-            imgPath={`${process.env.BASE_PATH}/playlist03.png`}
+            imgPath={`/playlist03.png`}
             alt="Day's playlist"
           />
         </div>
