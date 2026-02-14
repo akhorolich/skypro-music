@@ -7,9 +7,6 @@ import { redirect } from 'next/navigation';
 export default async function Favorites() {
   const access = await getValidToken();
   const favorites = await getAllFavoriteTracks(access);
-  if (!access) {
-    redirect('/');
-  }
   return (
     <Centerblock
       title="Избранное"
